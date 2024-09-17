@@ -1,10 +1,10 @@
-package com.mmjimenez.quizapp.ui.startquiz
+package com.mmjimenez.quizapp.ui.start
 
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class StartQuizViewModel @Inject constructor() : ViewModel() {
+class StartViewModel @Inject constructor() : ViewModel() {
 
 }

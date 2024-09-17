@@ -1,17 +1,16 @@
-package com.mmjimenez.quizapp.ui.startquiz
+package com.mmjimenez.quizapp.ui.quiz
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.viewModels
 import com.mmjimenez.quizapp.R
-import com.mmjimenez.quizapp.databinding.FragmentStartQuizBinding
+import com.mmjimenez.quizapp.databinding.FragmentQuizBinding
 
-class StartQuizFragment : Fragment() {
-    private val viewModel by viewModels<StartQuizViewModel>()
-    private lateinit var binding: FragmentStartQuizBinding
+class QuizFragment : Fragment() {
+    private lateinit var binding: FragmentQuizBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -19,8 +18,13 @@ class StartQuizFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        binding = FragmentStartQuizBinding.inflate(inflater, container, false)
+    ): View? {
+        binding = FragmentQuizBinding.inflate(inflater, container, false)
+
+        val totalProgress = binding.progressBar.max
+        binding.progressBar.progress = ((1 * totalProgress) / 3).toInt()
+
         return binding.root
     }
+
 }

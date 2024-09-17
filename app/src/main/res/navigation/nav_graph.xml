@@ -7,7 +7,16 @@
 
     <fragment
         android:id="@+id/startQuizFragment"
-        android:name="com.mmjimenez.quizapp.ui.startquiz.StartQuizFragment"
+        android:name="com.mmjimenez.quizapp.ui.start.StartFragment"
         android:label="fragment_start_quiz"
-        tools:layout="@layout/fragment_start_quiz" />
+        tools:layout="@layout/fragment_start" >
+        <action
+            android:id="@+id/action_startQuizFragment_to_quizFragment"
+            app:destination="@id/quizFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/quizFragment"
+        android:name="com.mmjimenez.quizapp.ui.quiz.QuizFragment"
+        android:label="fragment_quiz"
+        tools:layout="@layout/fragment_quiz" />
 </navigation>
