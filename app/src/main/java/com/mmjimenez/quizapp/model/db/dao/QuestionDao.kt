@@ -4,7 +4,6 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import com.mmjimenez.quizapp.model.entity.QuestionEntity
-import com.mmjimenez.quizapp.model.entity.QuizEntity
 
 @Dao
 interface QuestionDao {
