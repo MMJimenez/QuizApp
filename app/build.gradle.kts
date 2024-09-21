@@ -52,7 +52,7 @@ android {
 dependencies {
     val hilt_version = "2.50"
     val nav_version = "2.5.3"
-
+    val room_version = "2.5.0"
 
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.appcompat:appcompat:1.7.0")
@@ -69,4 +69,8 @@ dependencies {
     // navigation
     implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
     implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
+
+    // Room
+    implementation("androidx.room:room-runtime:$room_version")
+    annotationProcessor("androidx.room:room-compiler:$room_version")
 }
