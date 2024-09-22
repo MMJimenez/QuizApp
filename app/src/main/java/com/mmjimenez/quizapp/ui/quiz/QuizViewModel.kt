@@ -6,47 +6,44 @@ import com.mmjimenez.quizapp.model.repository.QuizRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
-import timber.log.Timber
 import javax.inject.Inject
 @HiltViewModel
 class QuizViewModel @Inject constructor(
     private val quizRepository: QuizRepository
 ) : ViewModel() {
-    var maxProgress = 0
-    val quizFlow: MutableStateFlow<Quiz> = MutableStateFlow(quizRepository.getActualQuiz()!!) // TODO manage this nullable
+    var actualQuiz = quizRepository.getActualQuiz() ?: Quiz() // TODO handle
 
     fun getTitleText() =
-        "Question ${quizFlow.value.actualQuestion + 1} / ${quizFlow.value.questions.size}"
+        "Question ${actualQuiz.actualIndexQuestion + 1} / ${actualQuiz.questions.size}"
 
     fun getQuizProgress(maxProgress: Int) =
-        (((quizFlow.value.actualQuestion + 1) * maxProgress) / quizFlow.value.questions.size)
+        (((actualQuiz.actualIndexQuestion + 1) * maxProgress) / actualQuiz.questions.size)
 
-    fun getQuestionTitle() = with(quizFlow.value) {
-        questions[actualQuestion].title
+    fun getQuestionTitle() = with(actualQuiz) {
+        questions[actualIndexQuestion].title
     }
 
-    fun getOptions() = with(quizFlow.value) {
-        questions[actualQuestion].options
+    fun getOptions() = with(actualQuiz) {
+        questions[actualIndexQuestion].options
     }
-    fun getAnswers() = with(quizFlow.value) {
-        questions[actualQuestion].answer
+    private fun getAnswers() = with(actualQuiz) {
+        questions[actualIndexQuestion].answer
     }
 
-    fun newQuestion() {
-        quizRepository.getActualQuiz()?.let { quiz ->
-            quiz.actualQuestion =+ 1
-            quizFlow.update { Quiz() }
-            quizFlow.update { quiz }
+    fun passToNextQuestion(): Boolean {
+        if (actualQuiz.actualIndexQuestion < actualQuiz.questions.size - 1) {
+            actualQuiz.actualIndexQuestion = actualQuiz.actualIndexQuestion + 1
+            return true
         }
+        return false
     }
 
     fun checkCorrectAnswers(option: String) = (option == getAnswers()).also { isCorrect ->
         if (isCorrect) {
-            quizRepository.getActualQuiz()?.correct =+ 1
+            actualQuiz.correct = actualQuiz.correct + 1
         } else {
-            quizRepository.getActualQuiz()?.failed =+ 1
+            actualQuiz.failed = actualQuiz.failed + 1
         }
-        Timber.v("Correct: $isCorrect")
     }
 }
 
