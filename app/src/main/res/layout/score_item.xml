@@ -29,7 +29,7 @@
                     android:id="@+id/txtName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text='@{"Resultado: " + score.result}'
+                    android:text='@{"Result: " + score.result}'
                     android:textAlignment="textStart"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -38,7 +38,7 @@
                     android:id="@+id/txtQuizId"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text='@{"Quiz - " + String.valueOf(score.quizId)}'
+                    android:text='@{"Quiz type: " + String.valueOf(score.quizId)}'
                     android:textAlignment="textStart"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/txtName" />
