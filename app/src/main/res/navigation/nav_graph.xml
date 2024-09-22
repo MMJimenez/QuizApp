@@ -9,32 +9,57 @@
         android:id="@+id/startQuizFragment"
         android:name="com.mmjimenez.quizapp.ui.start.StartFragment"
         android:label="fragment_start_quiz"
-        tools:layout="@layout/fragment_start" >
+        tools:layout="@layout/fragment_start">
         <action
             android:id="@+id/action_startQuizFragment_to_quizFragment"
-            app:destination="@id/quizFragment" />
+            app:destination="@id/quizFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/quizFragment"
         android:name="com.mmjimenez.quizapp.ui.quiz.QuizFragment"
         android:label="fragment_quiz"
-        tools:layout="@layout/fragment_quiz" >
+        tools:layout="@layout/fragment_quiz">
         <action
             android:id="@+id/action_quizFragment_self"
-            app:destination="@id/quizFragment" />
+            app:destination="@id/quizFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_quizFragment_to_resultFragment"
-            app:destination="@id/resultFragment" />
+            app:destination="@id/resultFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_quizFragment_to_startQuizFragment"
+            app:destination="@id/startQuizFragment"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/resultFragment"
         android:name="com.mmjimenez.quizapp.ui.result.ResultFragment"
-        android:label="ResultFragment" >
+        android:label="ResultFragment">
         <action
             android:id="@+id/action_resultFragment_to_quizFragment"
-            app:destination="@id/quizFragment" />
+            app:destination="@id/quizFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_resultFragment_to_startQuizFragment"
-            app:destination="@id/startQuizFragment" />
+            app:destination="@id/startQuizFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>
