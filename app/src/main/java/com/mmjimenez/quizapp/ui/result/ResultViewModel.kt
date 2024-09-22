@@ -4,7 +4,6 @@ import androidx.lifecycle.ViewModel
 import com.mmjimenez.quizapp.model.repository.QuizRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
-import kotlin.math.round
 
 @HiltViewModel
 class ResultViewModel @Inject constructor(

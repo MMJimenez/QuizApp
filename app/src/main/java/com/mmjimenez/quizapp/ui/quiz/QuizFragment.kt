@@ -8,20 +8,17 @@ import android.widget.RadioButton
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.mmjimenez.quizapp.R
 import com.mmjimenez.quizapp.databinding.FragmentQuizBinding
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
 import timber.log.Timber
 
 @AndroidEntryPoint
 class QuizFragment : Fragment() {
     private val viewModel: QuizViewModel by viewModels()
     private lateinit var binding: FragmentQuizBinding
+    private var isCheckedResult = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,8 +40,11 @@ class QuizFragment : Fragment() {
             progress = viewModel.getQuizProgress(max)
         }
         binding.fab.setOnClickListener {
-            correctQuiz()
-//            continueQuiz()
+            if (!isCheckedResult) {
+                correctQuiz()
+            } else {
+                continueQuiz()
+            }
         }
     }
 
@@ -55,19 +55,39 @@ class QuizFragment : Fragment() {
 
     private fun correctQuiz() {
         obtainCheckedRadioBtn()?.let { rdBtn ->
-            viewModel.checkCorrectAnswers(rdBtn.text.toString()).takeIf { !it }?.let {
-                rdBtn.setBackgroundColor(resources.getColor(R.color.red_pale))
+            Timber.v("pulsado" + rdBtn.text.toString())
+            if (!viewModel.checkCorrectAnswers(rdBtn.text.toString())) {
+                rdBtn.setResultColor(false)
             }
-        }
+        } ?: noOptionSelected()
         val indexAnswer = viewModel.getCorrectOption()
         with(binding) {
             when (indexAnswer) {
-                0 -> rdBtn0.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.green_pale))
-                1 -> rdBtn1.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.green_pale))
-                2 -> rdBtn2.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.green_pale))
-                3 -> rdBtn3.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.green_pale))
+                0 -> rdBtn0.setResultColor(true)
+                1 -> rdBtn1.setResultColor(true)
+                2 -> rdBtn2.setResultColor(true)
+                3 -> rdBtn3.setResultColor(true)
             }
+        }
+        disableOptions()
+        isCheckedResult = true
+    }
+    private fun noOptionSelected() {
+        with(binding) {
+            rdBtn0.setResultColor(false)
+            rdBtn1.setResultColor(false)
+            rdBtn2.setResultColor(false)
+            rdBtn3.setResultColor(false)
+        }
+    }
 
+
+    private fun disableOptions() {
+        with(binding) {
+            rdBtn0.isEnabled = false
+            rdBtn1.isEnabled = false
+            rdBtn2.isEnabled = false
+            rdBtn3.isEnabled = false
         }
     }
 

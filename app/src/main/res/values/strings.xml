@@ -5,4 +5,7 @@
 
     // Snackbars
     <string name="snackbar_loading_quiz">Loading Quiz…</string>
+    <string name="quiz_app">QUIZ APP</string>
+    <string name="start_quiz">Start Quiz</string>
+    <string name="continue_quiz">Continue Quiz</string>
 </resources>

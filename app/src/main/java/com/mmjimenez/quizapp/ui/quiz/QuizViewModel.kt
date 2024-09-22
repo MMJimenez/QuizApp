@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import com.mmjimenez.quizapp.model.repository.QuizRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
+
 @HiltViewModel
 class QuizViewModel @Inject constructor(
     private val quizRepository: QuizRepository
@@ -23,6 +24,7 @@ class QuizViewModel @Inject constructor(
     fun getOptions() = with(actualQuiz) {
         questions[actualIndexQuestion].options
     }
+
     private fun getAnswer() = with(actualQuiz) {
         questions[actualIndexQuestion].answer
     }

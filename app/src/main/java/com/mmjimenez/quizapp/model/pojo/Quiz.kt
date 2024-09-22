@@ -1,6 +1,6 @@
 package com.mmjimenez.quizapp.model.pojo
 
-data class Quiz (
+data class Quiz(
     val id: Int? = null,
     val questions: List<Question> = listOf(),
     var actualIndexQuestion: Int = 0,

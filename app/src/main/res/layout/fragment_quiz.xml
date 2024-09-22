@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.mmjimenez.quizapp.ui.quiz.QuizViewModel" />
@@ -31,11 +32,11 @@
 
                 <com.google.android.material.appbar.MaterialToolbar
                     android:id="@+id/topAppBar"
-                    app:titleCentered="true"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:minHeight="?attr/actionBarSize"
-                    app:title="@{viewModel.getTitleText}" />
+                    app:title="@{viewModel.getTitleText}"
+                    app:titleCentered="true" />
 
             </com.google.android.material.appbar.AppBarLayout>
 
@@ -52,7 +53,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
-                android:layout_marginRight="16dp"
+                android:layout_marginEnd="16dp"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/topAppBarLayout">
 
@@ -61,14 +62,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/green_pale"
-                    android:text='@{String.valueOf(quiz.correct) + " correct"}'/>
+                    android:text='@{String.valueOf(quiz.correct) + " correct"}' />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chipFailed"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/red_pale"
-                    android:text='@{String.valueOf(quiz.failed) + " failed"}'/>
+                    android:text='@{String.valueOf(quiz.failed) + " failed"}' />
 
             </com.google.android.material.chip.ChipGroup>
 
@@ -78,52 +79,58 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="48dp"
+                android:paddingHorizontal="32dp"
+                android:text="@{viewModel.getQuestionTitle()}"
+                android:textSize="32sp"
                 android:textStyle="bold"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                android:paddingHorizontal="32dp"
-                android:textSize="32sp"
-                app:layout_constraintTop_toBottomOf="@id/chipGroup"
-                android:text="@{viewModel.getQuestionTitle()}"/>
+                app:layout_constraintTop_toBottomOf="@id/chipGroup" />
 
             <RadioGroup
                 android:id="@+id/radioBtnGroup"
-                app:layout_constraintTop_toBottomOf="@id/txtQuestion"
-                app:layout_constraintLeft_toLeftOf="@id/txtQuestion"
-                android:layout_marginTop="32dp"
-                android:paddingLeft="32dp"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:paddingStart="32dp"
+                app:layout_constraintLeft_toLeftOf="@id/txtQuestion"
+                app:layout_constraintTop_toBottomOf="@id/txtQuestion">
+
                 <RadioButton
                     android:id="@+id/rdBtn0"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:textSize="@dimen/radBtnTextSize"                    android:checked="false"
+                    android:checked="false"
                     android:enabled="true"
-                    android:text="@{viewModel.getOptions[0]}"/>
+                    android:text="@{viewModel.getOptions[0]}"
+                    android:textSize="@dimen/radBtnTextSize" />
+
                 <RadioButton
                     android:id="@+id/rdBtn1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:textSize="@dimen/radBtnTextSize"                    android:checked="false"
+                    android:checked="false"
                     android:enabled="true"
-                    android:text="@{viewModel.getOptions[1]}"/>
+                    android:text="@{viewModel.getOptions[1]}"
+                    android:textSize="@dimen/radBtnTextSize" />
+
                 <RadioButton
                     android:id="@+id/rdBtn2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:textSize="@dimen/radBtnTextSize"
                     android:checked="false"
                     android:enabled="true"
-                    android:text="@{viewModel.getOptions[2]}"/>
+                    android:text="@{viewModel.getOptions[2]}"
+                    android:textSize="@dimen/radBtnTextSize" />
+
                 <RadioButton
                     android:id="@+id/rdBtn3"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:textSize="@dimen/radBtnTextSize"
                     android:checked="false"
                     android:enabled="true"
-                    android:text="@{viewModel.getOptions[3]}"/>
+                    android:text="@{viewModel.getOptions[3]}"
+                    android:textSize="@dimen/radBtnTextSize" />
             </RadioGroup>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -133,7 +140,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
-            android:layout_margin="16dp" />
+            android:layout_margin="16dp"
+            android:contentDescription="@string/continue_quiz"
+            android:src="@drawable/baseline_send_24" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

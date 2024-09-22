@@ -1,16 +1,13 @@
 package com.mmjimenez.quizapp.ui.result
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.mmjimenez.quizapp.R
 import com.mmjimenez.quizapp.databinding.FragmentResultBinding
-import com.mmjimenez.quizapp.ui.quiz.QuizFragmentDirections
-import com.mmjimenez.quizapp.ui.quiz.QuizViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

@@ -14,7 +14,7 @@ class QuizRepositoryImpl(
 ) : QuizRepository {
     override fun getQuiz(id: Int) = Quiz(id, questionDao.getAllFromQuiz(id).map { it.toQuestion() })
     override suspend fun preloadQuizs() {
-        QuizResIds.entries.forEach{ quizResIds ->
+        QuizResIds.entries.forEach { quizResIds ->
             if (existQuizInDb(quizResIds.dbId)) return
             Timber.i("Loading Quiz: ${quizResIds.dbId} in db")
             jsonFileService.readJson(quizResIds.resId)?.let {
