@@ -1,11 +1,8 @@
 package com.mmjimenez.quizapp.ui.quiz
 
 import androidx.lifecycle.ViewModel
-import com.mmjimenez.quizapp.model.pojo.Quiz
 import com.mmjimenez.quizapp.model.repository.QuizRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.update
 import javax.inject.Inject
 @HiltViewModel
 class QuizViewModel @Inject constructor(
@@ -26,7 +23,7 @@ class QuizViewModel @Inject constructor(
     fun getOptions() = with(actualQuiz) {
         questions[actualIndexQuestion].options
     }
-    private fun getAnswers() = with(actualQuiz) {
+    private fun getAnswer() = with(actualQuiz) {
         questions[actualIndexQuestion].answer
     }
 
@@ -38,7 +35,9 @@ class QuizViewModel @Inject constructor(
         return false
     }
 
-    fun checkCorrectAnswers(option: String) = (option == getAnswers()).also { isCorrect ->
+    fun getCorrectOption() = getOptions().indexOf(getAnswer())
+
+    fun checkCorrectAnswers(option: String) = (option == getAnswer()).also { isCorrect ->
         if (isCorrect) {
             actualQuiz.correct = actualQuiz.correct + 1
         } else {

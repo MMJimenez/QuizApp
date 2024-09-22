@@ -95,19 +95,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
                 <RadioButton
-                    android:id="@+id/enabled_selected"
+                    android:id="@+id/rdBtn0"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:textSize="@dimen/radBtnTextSize"                    android:checked="false"
                     android:enabled="true"
                     android:text="@{viewModel.getOptions[0]}"/>
                 <RadioButton
+                    android:id="@+id/rdBtn1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:textSize="@dimen/radBtnTextSize"                    android:checked="false"
                     android:enabled="true"
                     android:text="@{viewModel.getOptions[1]}"/>
                 <RadioButton
+                    android:id="@+id/rdBtn2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:textSize="@dimen/radBtnTextSize"
@@ -115,6 +117,7 @@
                     android:enabled="true"
                     android:text="@{viewModel.getOptions[2]}"/>
                 <RadioButton
+                    android:id="@+id/rdBtn3"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:textSize="@dimen/radBtnTextSize"

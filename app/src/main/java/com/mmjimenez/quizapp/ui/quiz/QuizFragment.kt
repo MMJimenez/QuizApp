@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.RadioButton
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -42,17 +43,45 @@ class QuizFragment : Fragment() {
             progress = viewModel.getQuizProgress(max)
         }
         binding.fab.setOnClickListener {
-            continueQuiz()
+            correctQuiz()
+//            continueQuiz()
         }
     }
 
-    private fun obtainCheckedOption() =
+    private fun obtainCheckedRadioBtn() =
         binding.radioBtnGroup.checkedRadioButtonId.let { id ->
-        view?.findViewById<RadioButton>(id)?.text.toString()
+            view?.findViewById<RadioButton>(id)
+        }
+
+    private fun correctQuiz() {
+        obtainCheckedRadioBtn()?.let { rdBtn ->
+            viewModel.checkCorrectAnswers(rdBtn.text.toString()).takeIf { !it }?.let {
+                rdBtn.setBackgroundColor(resources.getColor(R.color.red_pale))
+            }
+        }
+        val indexAnswer = viewModel.getCorrectOption()
+        with(binding) {
+            when (indexAnswer) {
+                0 -> rdBtn0.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.green_pale))
+                1 -> rdBtn1.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.green_pale))
+                2 -> rdBtn2.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.green_pale))
+                3 -> rdBtn3.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.green_pale))
+            }
+
+        }
+    }
+
+    private fun View.setResultColor(isCorrect: Boolean) {
+        setBackgroundColor(
+            if (isCorrect) {
+                ContextCompat.getColor(requireContext(), R.color.green_pale)
+            } else {
+                ContextCompat.getColor(requireContext(), R.color.red_pale)
+            }
+        )
     }
 
     private fun continueQuiz() {
-        viewModel.checkCorrectAnswers(obtainCheckedOption())
         if (viewModel.passToNextQuestion()) {
             directionToNextQuestion()
         } else {
