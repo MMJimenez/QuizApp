@@ -8,4 +8,5 @@
     <string name="quiz_app">QUIZ APP</string>
     <string name="start_quiz">Start Quiz</string>
     <string name="continue_quiz">Continue Quiz</string>
+    <string name="score_history">High Scores</string>
 </resources>

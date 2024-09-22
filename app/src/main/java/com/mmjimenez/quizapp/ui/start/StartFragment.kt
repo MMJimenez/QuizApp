@@ -10,8 +10,10 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.mmjimenez.quizapp.databinding.FragmentStartBinding
+import com.mmjimenez.quizapp.ui.start.adapter.ScoresAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -46,6 +48,17 @@ class StartFragment : Fragment() {
 
     private fun initViewComponents() {
         binding.btnQuiz.setOnClickListener { directionToQuizFragment() }
+        viewModel.getScoreHistory().let { list ->
+            with(binding.historyRecycler) {
+                if (list.isNotEmpty()) {
+                    layoutManager = LinearLayoutManager(requireContext())
+                    adapter = ScoresAdapter(list.sortedByDescending { it.result })
+                } else {
+                    visibility = View.GONE
+                    binding.txtHistory.visibility = View.GONE
+                }
+            }
+        }
     }
 
     private fun initCollectors() {

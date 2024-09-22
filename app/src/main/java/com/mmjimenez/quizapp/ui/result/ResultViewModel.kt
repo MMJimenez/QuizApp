@@ -11,14 +11,9 @@ class ResultViewModel @Inject constructor(
 ) : ViewModel() {
     var actualQuiz = quizRepository.getActualQuiz()
 
-    fun getResult(): String = with(actualQuiz) {
-        val resultPoints = (correct.toDouble() / (questions.size).toDouble() * 10)
-        var stringResult = String.format("%.1f", resultPoints)
-        if (stringResult.length > 2 && stringResult.takeLast(2) == ",0") {
-            stringResult = stringResult.dropLast(2)
-        }
-        return stringResult
-    }
+    fun getResult(): String = quizRepository.getResult()
+
+    fun saveScore() = quizRepository.saveScore()
 
     fun restartQuiz() {
         actualQuiz.id?.let {

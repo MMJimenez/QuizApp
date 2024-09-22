@@ -31,4 +31,6 @@ class StartViewModel @Inject constructor(
     fun startQuiz() {
         quizRepository.startNewQuiz(QuizResIds.QUIZ_1)
     }
+
+    fun getScoreHistory() = quizRepository.getAllScores()
 }

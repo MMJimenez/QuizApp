@@ -38,6 +38,7 @@ class ResultFragment : Fragment() {
     }
 
     private fun retryQuiz() {
+        viewModel.saveScore()
         viewModel.restartQuiz()
         directionToQuizFragment()
     }
@@ -48,6 +49,7 @@ class ResultFragment : Fragment() {
     }
 
     private fun directionToStartFragment() {
+        viewModel.saveScore()
         val action = ResultFragmentDirections.actionResultFragmentToStartQuizFragment()
         findNavController().navigate(action)
     }

@@ -35,4 +35,8 @@ object DbModule {
     @Singleton
     @Provides
     fun provideQuestionDao(db: ApplicationDb) = db.questionDao()
+
+    @Singleton
+    @Provides
+    fun provideQuizScore(db: ApplicationDb) = db.quizScoreDao()
 }

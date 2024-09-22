@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="score"
+            type="com.mmjimenez.quizapp.model.pojo.Score" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/txtName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text='@{"Resultado: " + score.result}'
+                    android:textAlignment="textStart"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/txtQuizId"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text='@{"Quiz - " + String.valueOf(score.quizId)}'
+                    android:textAlignment="textStart"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/txtName" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+
+</layout>
