@@ -7,7 +7,8 @@ interface QuizRepository {
     fun getQuiz(id: Int): Quiz
     suspend fun preloadQuizs()
 
-    fun getActualQuiz(): Quiz?
+    fun getActualQuiz(): Quiz
 
     fun startNewQuiz(quiz: QuizResIds): Quiz
+    fun startNewQuiz(id: Int): Quiz
 }

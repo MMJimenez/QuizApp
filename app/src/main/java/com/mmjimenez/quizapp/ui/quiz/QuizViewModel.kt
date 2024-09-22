@@ -11,7 +11,7 @@ import javax.inject.Inject
 class QuizViewModel @Inject constructor(
     private val quizRepository: QuizRepository
 ) : ViewModel() {
-    var actualQuiz = quizRepository.getActualQuiz() ?: Quiz() // TODO handle
+    var actualQuiz = quizRepository.getActualQuiz()
 
     fun getTitleText() =
         "Question ${actualQuiz.actualIndexQuestion + 1} / ${actualQuiz.questions.size}"

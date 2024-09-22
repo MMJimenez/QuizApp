@@ -22,5 +22,19 @@
         <action
             android:id="@+id/action_quizFragment_self"
             app:destination="@id/quizFragment" />
+        <action
+            android:id="@+id/action_quizFragment_to_resultFragment"
+            app:destination="@id/resultFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/resultFragment"
+        android:name="com.mmjimenez.quizapp.ui.result.ResultFragment"
+        android:label="ResultFragment" >
+        <action
+            android:id="@+id/action_resultFragment_to_quizFragment"
+            app:destination="@id/quizFragment" />
+        <action
+            android:id="@+id/action_resultFragment_to_startQuizFragment"
+            app:destination="@id/startQuizFragment" />
     </fragment>
 </navigation>

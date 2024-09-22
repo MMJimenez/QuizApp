@@ -21,10 +21,6 @@ class QuizFragment : Fragment() {
     private val viewModel: QuizViewModel by viewModels()
     private lateinit var binding: FragmentQuizBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -35,9 +31,7 @@ class QuizFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.lifecycleOwner = this
         binding.viewModel = viewModel
-
         binding.quiz = viewModel.actualQuiz
         initViewComponents()
     }
@@ -47,8 +41,7 @@ class QuizFragment : Fragment() {
             progress = viewModel.getQuizProgress(max)
         }
         binding.fab.setOnClickListener {
-            viewModel.checkCorrectAnswers(obtainCheckedOption())
-            directionToNextQuestion()
+            continueQuiz()
         }
     }
 
@@ -57,12 +50,22 @@ class QuizFragment : Fragment() {
         view?.findViewById<RadioButton>(id)?.text.toString()
     }
 
-    private fun directionToNextQuestion() {
+    private fun continueQuiz() {
+        viewModel.checkCorrectAnswers(obtainCheckedOption())
         if (viewModel.passToNextQuestion()) {
-            val action = QuizFragmentDirections.actionQuizFragmentSelf()
-            findNavController().navigate(action)
+            directionToNextQuestion()
         } else {
-
+            directionToResultFragment()
         }
+    }
+
+    private fun directionToNextQuestion() {
+        val action = QuizFragmentDirections.actionQuizFragmentSelf()
+        findNavController().navigate(action)
+    }
+
+    private fun directionToResultFragment() {
+        val action = QuizFragmentDirections.actionQuizFragmentToResultFragment()
+        findNavController().navigate(action)
     }
 }

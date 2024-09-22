@@ -25,8 +25,9 @@ class QuizRepositoryImpl(
         }
     }
 
-    override fun getActualQuiz(): Quiz? = actualQuiz
-    override fun startNewQuiz(quizId: QuizResIds): Quiz = getQuiz(quizId.dbId).also { actualQuiz = it }
+    override fun getActualQuiz(): Quiz = actualQuiz ?: Quiz() // TODO handle this nullable
+    override fun startNewQuiz(quiz: QuizResIds): Quiz = getQuiz(quiz.dbId).also { actualQuiz = it }
+    override fun startNewQuiz(id: Int): Quiz = getQuiz(id).also { actualQuiz = it }
     private fun existQuizInDb(quizId: Int) = questionDao.checkIfExistsQuiz(quizId) != null
 
     companion object {
