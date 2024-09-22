@@ -1,7 +1,7 @@
 package com.mmjimenez.quizapp.model.db
 
 import androidx.room.TypeConverter
-import com.mmjimenez.quizapp.model.STRING_DELIMITER_CHAR
+import com.mmjimenez.quizapp.model.Constants.Companion.STRING_DELIMITER_CHAR
 
 class DbTypeConverter {
     @TypeConverter

@@ -3,6 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="viewModel"
+            type="com.mmjimenez.quizapp.ui.quiz.QuizViewModel" />
+
+        <variable
+            name="quiz"
+            type="com.mmjimenez.quizapp.model.pojo.Quiz" />
+    </data>
+
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -25,7 +35,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:minHeight="?attr/actionBarSize"
-                    app:title="Quiz 1/3" />
+                    app:title="@{viewModel.getTitleText}" />
 
             </com.google.android.material.appbar.AppBarLayout>
 
@@ -33,7 +43,6 @@
                 android:id="@+id/progressBar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/topAppBarLayout" />
@@ -52,14 +61,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/green_pale"
-                    android:text="3 correct" />
+                    android:text='@{String.valueOf(quiz.correct) + " correct"}'/>
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chipFailed"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/red_pale"
-                    android:text="1 failed" />
+                    android:text='@{String.valueOf(quiz.failed) + " failed"}'/>
 
             </com.google.android.material.chip.ChipGroup>
 
@@ -71,16 +80,15 @@
                 android:layout_marginTop="48dp"
                 android:textStyle="bold"
                 app:layout_constraintLeft_toLeftOf="parent"
-                android:layout_marginLeft="64dp"
+                android:layout_marginHorizontal="64dp"
                 android:textSize="24sp"
                 app:layout_constraintTop_toBottomOf="@id/chipGroup"
-                android:text="Titulo de la pregunta"/>
+                android:text="@{viewModel.getQuestionTitle()}"/>
 
             <RadioGroup
-                android:checkedButton="@+id/enabled_selected"
+                android:id="@+id/radioBtnGroup"
                 app:layout_constraintTop_toBottomOf="@id/txtQuestion"
                 app:layout_constraintLeft_toLeftOf="@id/txtQuestion"
-
                 android:layout_marginTop="32dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
@@ -90,38 +98,31 @@
                     android:layout_height="match_parent"
                     android:checked="false"
                     android:enabled="true"
-                    android:text="Respuesta 1"/>
+                    android:text="@{viewModel.getOptions[0]}"/>
                 <RadioButton
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:checked="false"
                     android:enabled="true"
-                    android:text="Respuesta 2"/>
+                    android:text="@{viewModel.getOptions[1]}"/>
                 <RadioButton
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:checked="false"
                     android:enabled="true"
-                    android:text="Respuesta 3"/>
+                    android:text="@{viewModel.getOptions[2]}"/>
                 <RadioButton
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:checked="false"
                     android:enabled="true"
-                    android:text="Respuesta 4"/>
-                <RadioButton
-                    android:id="@+id/rbtnInvisible"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:checked="true"
-                    android:enabled="true"
-                    android:visibility="gone"/>
+                    android:text="@{viewModel.getOptions[3]}"/>
             </RadioGroup>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floating_action_button"
+            android:id="@+id/fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"

@@ -1,0 +1,116 @@
+{
+  "quiz": {
+    "questions": [
+      {
+        "id": 1,
+        "question": "What is the capital of France?",
+        "options": [
+          "Paris",
+          "Berlin",
+          "Madrid",
+          "Rome"
+        ],
+        "answer": "Paris"
+      },
+      {
+        "id": 2,
+        "question": "Which planet is known as the Red Planet?",
+        "options": [
+          "Mars",
+          "Jupiter",
+          "Saturn",
+          "Venus"
+        ],
+        "answer": "Mars"
+      },
+      {
+        "id": 3,
+        "question": "Who wrote 'Hamlet'?",
+        "options": [
+          "William Shakespeare",
+          "Mark Twain",
+          "Charles Dickens",
+          "Leo Tolstoy"
+        ],
+        "answer": "William Shakespeare"
+      },
+      {
+        "id": 4,
+        "question": "What is the smallest prime number?",
+        "options": [
+          "1",
+          "2",
+          "3",
+          "5"
+        ],
+        "answer": "2"
+      },
+      {
+        "id": 5,
+        "question": "Which gas do plants absorb from the atmosphere?",
+        "options": [
+          "Oxygen",
+          "Nitrogen",
+          "Carbon Dioxide",
+          "Hydrogen"
+        ],
+        "answer": "Carbon Dioxide"
+      },
+      {
+        "id": 6,
+        "question": "What is the chemical symbol for water?",
+        "options": [
+          "O2",
+          "H2O",
+          "CO2",
+          "HO2"
+        ],
+        "answer": "H2O"
+      },
+      {
+        "id": 7,
+        "question": "Who painted the 'Starry Night'?",
+        "options": [
+          "Vincent van Gogh",
+          "Pablo Picasso",
+          "Claude Monet",
+          "Leonardo da Vinci"
+        ],
+        "answer": "Vincent van Gogh"
+      },
+      {
+        "id": 8,
+        "question": "In which year did the Titanic sink?",
+        "options": [
+          "1912",
+          "1920",
+          "1905",
+          "1918"
+        ],
+        "answer": "1912"
+      },
+      {
+        "id": 9,
+        "question": "What is the largest mammal in the world?",
+        "options": [
+          "Elephant",
+          "Blue Whale",
+          "Giraffe",
+          "Great White Shark"
+        ],
+        "answer": "Blue Whale"
+      },
+      {
+        "id": 10,
+        "question": "Which language is used to develop Android Apps?",
+        "options": [
+          "Kotlin",
+          "Swift",
+          "Ruby",
+          "Go"
+        ],
+        "answer": "Kotlin"
+      }
+    ]
+  }
+}

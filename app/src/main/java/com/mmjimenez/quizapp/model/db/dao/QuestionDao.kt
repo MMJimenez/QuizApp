@@ -10,6 +10,9 @@ interface QuestionDao {
     @Insert
     fun set(questionEntity: QuestionEntity)
 
-    @Query("SELECT * FROM Question")
-    fun getAll(): List<QuestionEntity>
+    @Query("SELECT * FROM Question WHERE quizId == :quizId")
+    fun getAllFromQuiz(quizId: Int): List<QuestionEntity>
+
+    @Query("SELECT 1 FROM Question WHERE quizId == :quizId")
+    fun checkIfExistsQuiz(quizId: Int): Int?
 }

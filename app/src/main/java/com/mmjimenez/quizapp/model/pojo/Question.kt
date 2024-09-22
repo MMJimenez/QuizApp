@@ -5,5 +5,4 @@ data class Question(
     var title: String = "",
     var options: List<String> = listOf(),
     var answer: String = "",
-    var quizId: Int? = null
 )

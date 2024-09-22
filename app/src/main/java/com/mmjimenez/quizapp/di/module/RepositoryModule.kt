@@ -3,6 +3,7 @@ package com.mmjimenez.quizapp.di.module
 import com.mmjimenez.quizapp.model.db.dao.QuestionDao
 import com.mmjimenez.quizapp.model.repository.QuizRepository
 import com.mmjimenez.quizapp.model.repository.QuizRepositoryImpl
+import com.mmjimenez.quizapp.model.service.JsonFileService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,7 +17,9 @@ object RepositoryModule {
     @Provides
     fun provideQuizRepository(
         questionDao: QuestionDao,
+        jsonFileService: JsonFileService,
     ): QuizRepository = QuizRepositoryImpl(
-        questionDao
+        questionDao,
+        jsonFileService,
     )
 }

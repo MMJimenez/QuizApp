@@ -73,4 +73,10 @@ dependencies {
     // Room
     implementation("androidx.room:room-runtime:$room_version")
     ksp("androidx.room:room-compiler:$room_version")
+
+    // gson
+    implementation("com.google.code.gson:gson:2.10.1")
+
+    // timber
+    implementation("com.jakewharton.timber:timber:5.0.0")
 }

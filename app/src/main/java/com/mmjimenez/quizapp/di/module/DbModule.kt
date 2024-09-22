@@ -26,7 +26,7 @@ object DbModule {
         "quiz-database"
     )
         .fallbackToDestructiveMigration()
-
+        .allowMainThreadQueries() // TODO delete line
         .build()
 
     @Provides

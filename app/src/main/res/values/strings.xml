@@ -2,4 +2,7 @@
     <string name="app_name">QuizApp</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    // Snackbars
+    <string name="snackbar_loading_quiz">Loading Quiz…</string>
 </resources>
